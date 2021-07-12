@@ -21,20 +21,4 @@ enum JsonDataType: CustomStringConvertible {
         }
     }
 
-/*
-    init?(rawValue: String) {
-        if rawValue == "hz" {
-            self = JsonDataType.text
-
-        } else if rawValue == "picture" {
-            self = JsonDataType.picture
-
-        } else if rawValue == "selector" {
-            self = JsonDataType.selector
-
-        } else {
-            return nil
-        }
-    }
-*/
 }

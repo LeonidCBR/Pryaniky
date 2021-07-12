@@ -10,8 +10,16 @@ import UIKit
 class ParentCell: UITableViewCell {
 
     // MARK: - Properties
+
+    let pryanikText: UILabel = {
+        let txt = UILabel()
+        txt.font = UIFont.boldSystemFont(ofSize: 14)
+        txt.numberOfLines = 0
+        txt.textAlignment = .center
+        return txt
+    }()
     
-    var data: AnyObject? {
+    var pryanik: Pryanik? {
         didSet {
             updateUI()
         }
@@ -37,7 +45,7 @@ class ParentCell: UITableViewCell {
     }
 
     func updateUI() {
-        // Will be implemented in subclasses
+        pryanikText.text = pryanik?.text
     }
 
 }

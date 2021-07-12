@@ -10,14 +10,13 @@ import UIKit
 class TextCell: ParentCell {
 
     // MARK: - Methods
-    
-    override func updateUI() { 
-        guard let textData = data as? HZ else {
-            print("ERROR: Failed to casting text data!")
-            return
-        }
 
-        textLabel?.text = textData.text
+    override func configureUI() {
+        contentView.addSubview(pryanikText)
+        pryanikText.anchor(top: contentView.topAnchor, paddingTop: 20.0,
+                           bottom: contentView.bottomAnchor, paddingBottom: 20.0,
+                           leading: contentView.leadingAnchor, paddingLeading: 20.0,
+                           trailing: contentView.trailingAnchor, paddingTrailing: 20.0)
     }
 
 }

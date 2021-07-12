@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct HZ: Decodable {
+struct HZ: Pryanik, Decodable {
     let text: String
 }

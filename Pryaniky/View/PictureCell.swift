@@ -17,15 +17,6 @@ class PictureCell: ParentCell {
         return iv
     }()
 
-    let pictureText: UILabel = {
-        let txt = UILabel()
-        txt.font = UIFont.systemFont(ofSize: 14)
-//        txt.textColor = .systemBlue
-        txt.numberOfLines = 0
-        txt.textAlignment = .center
-        return txt
-    }()
-
 
     // MARK: - Methods
 
@@ -36,25 +27,24 @@ class PictureCell: ParentCell {
         pictureView.anchor(top: contentView.topAnchor, paddingTop: 30.0,
                            bottom: contentView.bottomAnchor, paddingBottom: 30.0,
                            leading: contentView.leadingAnchor, paddingLeading: 20.0,
-                           width: 100.0/*,
-                           height: 100.0*/)
+                           width: 100.0)
 
-        contentView.addSubview(pictureText)
-        pictureText.anchor(leading: pictureView.trailingAnchor, paddingLeading: 10.0,
+        contentView.addSubview(pryanikText)
+        pryanikText.anchor(leading: pictureView.trailingAnchor, paddingLeading: 10.0,
                            trailing: contentView.trailingAnchor, paddingTrailing: 10.0,
                            centerY: contentView.centerYAnchor)
     }
 
     override func updateUI() {
-        guard let pictureData = data as? Picture else {
+        super.updateUI()
+
+        guard let picture = pryanik as? Picture else {
             print("ERROR: Failed to casting picture data!")
             return
         }
 
-        pictureText.text = pictureData.text
-
         // TODO: - Download picture
-        downloadImage(with: pictureData.url)
+        downloadImage(with: picture.url)
     }
 
     func downloadImage(with path: String) {

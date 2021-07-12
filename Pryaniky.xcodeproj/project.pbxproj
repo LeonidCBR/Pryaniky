@@ -29,6 +29,8 @@
 		D729988726981FCA00500111 /* JsonDataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D729988626981FCA00500111 /* JsonDataType.swift */; };
 		D729988926982F3C00500111 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D729988826982F3C00500111 /* Extensions.swift */; };
 		D7DFDC97269BF01D00CE7FA2 /* PresenterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DFDC96269BF01D00CE7FA2 /* PresenterManager.swift */; };
+		D7DFDC99269BF74700CE7FA2 /* Pryanik.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DFDC98269BF74700CE7FA2 /* Pryanik.swift */; };
+		D7DFDC9B269BFFC600CE7FA2 /* RuntimeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DFDC9A269BFFC600CE7FA2 /* RuntimeError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +58,8 @@
 		D729988626981FCA00500111 /* JsonDataType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonDataType.swift; sourceTree = "<group>"; };
 		D729988826982F3C00500111 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D7DFDC96269BF01D00CE7FA2 /* PresenterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterManager.swift; sourceTree = "<group>"; };
+		D7DFDC98269BF74700CE7FA2 /* Pryanik.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pryanik.swift; sourceTree = "<group>"; };
+		D7DFDC9A269BFFC600CE7FA2 /* RuntimeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuntimeError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,14 +118,16 @@
 		D72998682697FDDC00500111 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D7DFDC98269BF74700CE7FA2 /* Pryanik.swift */,
 				D72998722698019700500111 /* HZ.swift */,
 				D7299874269801C500500111 /* Picture.swift */,
-				D7299876269801D700500111 /* Variant.swift */,
 				D72998782698021000500111 /* Selector.swift */,
+				D7299876269801D700500111 /* Variant.swift */,
 				D729987A2698024900500111 /* DataItem.swift */,
 				D729987C2698026800500111 /* JsonData.swift */,
 				D729988626981FCA00500111 /* JsonDataType.swift */,
 				D712FE2C269ABC1C004E9CE3 /* NetworkError.swift */,
+				D7DFDC9A269BFFC600CE7FA2 /* RuntimeError.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -239,6 +245,8 @@
 				D7299875269801C500500111 /* Picture.swift in Sources */,
 				D729988926982F3C00500111 /* Extensions.swift in Sources */,
 				D7299877269801D700500111 /* Variant.swift in Sources */,
+				D7DFDC9B269BFFC600CE7FA2 /* RuntimeError.swift in Sources */,
+				D7DFDC99269BF74700CE7FA2 /* Pryanik.swift in Sources */,
 				D7029C772696928400E73EFE /* SceneDelegate.swift in Sources */,
 				D7DFDC97269BF01D00CE7FA2 /* PresenterManager.swift in Sources */,
 				D7299881269815CC00500111 /* TextCell.swift in Sources */,

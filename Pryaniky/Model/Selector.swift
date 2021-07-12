@@ -7,7 +7,22 @@
 
 import Foundation
 
-struct Selector: Decodable {
-    let selectedId: Int
-    let variants: [Variant]
+struct Selector: Pryanik, Decodable {
+    
+    var text: String {
+        return variants.first() { $0.id == selectedId }?.text ?? "SelectedId is invalid!"
+    }
+
+    var selectedId: Int {
+        didSet {
+            if (selectedId - 1 < variants.startIndex) || (selectedId - 1 > variants.endIndex) {
+                return selectedId = variants.startIndex + 1
+            }
+        }
+    }
+    private let variants: [Variant]
+
+    var variantsCount: Int {
+        return variants.count
+    }
 }

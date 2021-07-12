@@ -74,7 +74,7 @@ class MainTableViewController: UITableViewController {
         }
 
         let cell = tableView.dequeueReusableCell(withIdentifier: jsonDataType.description, for: indexPath) as! ParentCell
-        cell.data = dataItems?.first() {$0.name == typeName}?.data
+        cell.pryanik = dataItems?.first() {$0.name == typeName}?.data
         return cell
     }
 

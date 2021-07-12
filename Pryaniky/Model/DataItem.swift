@@ -9,7 +9,7 @@ import Foundation
 
 struct DataItem: Decodable {
     let name: String
-    let data: AnyObject /// it could be HZ, Picture or Selector
+    let data: Pryanik /// it could be HZ, Picture or Selector
 
     enum DataItemKeys: String, CodingKey
     {
@@ -21,16 +21,16 @@ struct DataItem: Decodable {
         name = try container.decode(String.self, forKey: .name)
 
         if name == K.hz {
-            data = try container.decode(HZ.self, forKey: .data) as AnyObject
+            data = try container.decode(HZ.self, forKey: .data)
 
         } else if name == K.picture {
-            data = try container.decode(Picture.self, forKey: .data) as AnyObject
+            data = try container.decode(Picture.self, forKey: .data)
 
         } else if name == K.selector {
-            data = try container.decode(Selector.self, forKey: .data) as AnyObject
+            data = try container.decode(Selector.self, forKey: .data)
 
         } else {
-            data = "Decoding error" as AnyObject
+            throw RuntimeError("Decoding error")
         }
     }
 }
