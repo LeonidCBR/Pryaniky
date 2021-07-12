@@ -35,9 +35,6 @@ class MainTableViewController: UITableViewController {
     }
 
     func fetchData() {
-
-        print("DEBUG: Fetching data.")
-
         NetworkManager.shared.downloadJsonData() { [weak self] result in
             guard let self = self else { return }
 

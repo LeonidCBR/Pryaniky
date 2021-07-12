@@ -41,7 +41,7 @@ class ParentCell: UITableViewCell {
     // MARK: - Methods
 
     func configureUI() {
-        // Will be implemented in subclasses
+        // This method will be implemented by subclasses
     }
 
     func updateUI() {

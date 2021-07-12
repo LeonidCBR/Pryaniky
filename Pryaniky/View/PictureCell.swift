@@ -13,7 +13,7 @@ class PictureCell: ParentCell {
 
     let pictureView : UIImageView = {
         let iv = UIImageView()
-        iv.backgroundColor = .red
+//        iv.backgroundColor = .red
         return iv
     }()
 
@@ -48,6 +48,14 @@ class PictureCell: ParentCell {
     }
 
     func downloadImage(with path: String) {
-        NetworkManager.shared.downloadImage(with: path)
+        NetworkManager.shared.downloadImage(with: path) { [weak self] result in
+            switch result {
+            case .success(let data):
+                self?.pictureView.image = UIImage(data: data)
+            case .failure(let error):
+                print("DEBUG: Delegate error \(error.localizedDescription)")
+                self?.pictureView.backgroundColor = .red
+            }
+        }
     }
 }

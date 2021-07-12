@@ -17,9 +17,9 @@ struct NetworkManager {
 
     // MARK: - Methods
 
-    func downloadJsonData(completionHandler: @escaping (Result<JsonData, NetworkError>) -> Void) {
+    private func performRequest(to apiUrl: URL, completionHandler: @escaping (Result<Data, NetworkError>) -> Void) {
 
-        let task = URLSession.shared.dataTask(with: K.url) { data, response, error in
+        let task = URLSession.shared.dataTask(with: apiUrl) { data, response, error in
 
             if let error = error {
                 print("DEBUG: \(#function) urlSession error \(error)")
@@ -51,7 +51,7 @@ struct NetworkManager {
             }
 
             guard let mimeType = httpResponse.mimeType,
-                  mimeType == "application/json",
+                  (mimeType == "application/json") || ( mimeType.hasPrefix("image") ),
                   let data = data else {
                 DispatchQueue.main.async {
                     completionHandler(.failure(.unexpectedData))
@@ -59,24 +59,50 @@ struct NetworkManager {
                 return
             }
 
-            do {
-                let jsonData = try JsonData(from: data)
-                DispatchQueue.main.async {
-                    completionHandler(.success(jsonData))
-                }
-                
-            } catch {
-                DispatchQueue.main.async {
-                    completionHandler(.failure(.unexpectedJSON))
-                }
-                return
+            DispatchQueue.main.async {
+                completionHandler(.success(data))
             }
         }
 
         task.resume()
     }
 
-    func downloadImage(with path: String) {
-        print("DEBUG: \(#function) Downloading image with url \(path)")
+
+    func downloadJsonData(completionHandler: @escaping (Result<JsonData, NetworkError>) -> Void) {
+
+        performRequest(to: K.url) { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let jsonData = try JsonData(from: data)
+                    completionHandler(.success(jsonData))
+
+                } catch {
+                    completionHandler(.failure(.unexpectedJSON))
+                    return
+                }
+
+            case .failure(let error):
+                completionHandler(.failure(error))
+            }
+        }
+    }
+
+    
+    func downloadImage(with path: String, completionHandler: @escaping (Result<Data, NetworkError>) -> Void ) {
+//        print("DEBUG: \(#function) Downloading image with url \(path)")
+        guard let url = URL(string: path) else {
+            print("DEBUG: Path of the image is invalid!")
+            return
+        }
+
+        performRequest(to: url) { result in
+            switch result {
+            case .success(let data):
+                completionHandler(.success(data))
+            case .failure(let error):
+                completionHandler(.failure(error))
+            }
+        }
     }
 }
