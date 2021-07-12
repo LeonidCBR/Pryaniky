@@ -8,6 +8,8 @@
 import Foundation
 
 struct Selector: Pryanik, Decodable {
+
+    // MARK: - Properties
     
     var text: String {
         return variants.first() { $0.id == selectedId }?.text ?? "SelectedId is invalid!"
