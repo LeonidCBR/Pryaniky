@@ -31,7 +31,8 @@ class MainTableViewController: UITableViewController {
         tableView.register(SelectorCell.self, forCellReuseIdentifier: JsonDataType.selector.description)
 
         // dummy cell
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: K.mainCellIdentifier)
+//        tableView.register(UITableViewCell.self, forCellReuseIdentifier: K.mainCellIdentifier)
+        tableView.register(DummyCell.self, forCellReuseIdentifier: K.dummyCellIdentifier)
     }
 
     func fetchData() {
@@ -64,13 +65,25 @@ class MainTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        guard let typeName = viewItems?[indexPath.row], let jsonDataType = K.dictTypes[typeName] else { //JsonDataType(rawValue: typeName) else {
-            // return dummy cell
-            print("DEBUG: Return dummy cell")
-            return tableView.dequeueReusableCell(withIdentifier: K.mainCellIdentifier, for: indexPath)
+        let cell: ParentCell
+
+        guard let typeName = viewItems?[indexPath.row] else {
+            print("DEBUG: Return dummy cell with unknown block")
+            cell = tableView.dequeueReusableCell(withIdentifier: K.dummyCellIdentifier, for: indexPath) as! DummyCell
+            cell.pryanik = UnknownBlock(text: "Unknown block")
+            return cell
         }
 
-        let cell = tableView.dequeueReusableCell(withIdentifier: jsonDataType.description, for: indexPath) as! ParentCell
+        if let jsonDataType = K.dictTypes[typeName] {
+            cell = tableView.dequeueReusableCell(withIdentifier: jsonDataType.description, for: indexPath) as! ParentCell
+
+        } else {
+            // return dummy cell
+            print("DEBUG: Return dummy cell")
+            cell = tableView.dequeueReusableCell(withIdentifier: K.dummyCellIdentifier, for: indexPath) as! DummyCell
+            (cell as! DummyCell).pryanikName.text = typeName
+        }
+
         cell.pryanik = dataItems?.first() {$0.name == typeName}?.data
         return cell
     }

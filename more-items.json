@@ -1,0 +1,112 @@
+{
+  "data": [
+    {
+      "name": "picture",
+      "data": {
+        "url": "https://pryaniky.com/static/img/logo-a-512.png",
+        "text": "Пряники"
+      }
+    },
+    {
+      "name": "picture",
+      "data": {
+        "url": "https://pryaniky.com/static/img/logo-c-512.png",
+        "text": "Пряники.Чат 1"
+      }
+    },
+    {
+      "name": "picture",
+      "data": {
+        "url": "https://pryaniky.com/static/img/logo-c-512.png",
+        "text": "Пряники.Чат 2"
+      }
+    },
+    {
+      "name": "picture",
+      "data": {
+        "url": "https://pryaniky.com/static/img/logo-c-512.png",
+        "text": "Пряники.Чат 3"
+      }
+    },
+    {
+      "name": "hz",
+      "data": {
+        "text": "Первый некоторый текст"
+      }
+    },
+    {
+      "name": "hz",
+      "data": {
+        "text": "Второй некоторый текст"
+      }
+    },
+    {
+      "name": "selector",
+      "data": {
+        "selectedId": 2,
+        "variants": [
+          {
+            "id": 1,
+            "text": "Вариант какой-то"
+          },
+          {
+            "id": 2,
+            "text": "Вариант по значению"
+          },
+          {
+            "id": 3,
+            "text": "Вариант по индексу"
+          }
+        ]
+      }
+    },
+    {
+      "name": "selector",
+      "data": {
+        "selectedId": 2,
+        "variants": [
+          {
+            "id": 1,
+            "text": "Вариант3 какой-то"
+          },
+          {
+            "id": 2,
+            "text": "Вариант3 по значению"
+          },
+          {
+            "id": 3,
+            "text": "Вариант3 по индексу"
+          }
+        ]
+      }
+    },
+    {
+      "name": "selector",
+      "data": {
+        "selectedId": 1,
+        "variants": [
+          {
+            "id": 1,
+            "text": "Вариант2  по значению"
+          },
+          {
+            "id": 2,
+            "text": "Вариант2 по индексу"
+          },
+          {
+            "id": 3,
+            "text": "Вариант2 ещё один"
+          }
+        ]
+      }
+    }
+  ],
+  "view": [
+    "hz",
+    "selector",
+    "picture",
+    "hz",
+    "picture",
+    "selector"
+  ]
+}

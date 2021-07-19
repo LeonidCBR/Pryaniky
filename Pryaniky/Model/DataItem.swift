@@ -30,7 +30,15 @@ struct DataItem: Decodable {
             data = try container.decode(Selector.self, forKey: .data)
 
         } else {
-            throw RuntimeError("Decoding error")
+            // trying to decode as dummy data
+            print("DEBUG: Trying to decode unknown item \"\(name)\" as dummy data...")
+            if let unknownData = try? container.decode(UnknownBlock.self, forKey: .data) {
+                data = unknownData
+            } else {
+                print("DEBUG: We've got unknown data without text block!")
+                data = UnknownBlock(text: "Unknown block")
+            }
+//            throw RuntimeError("Decoding error")
         }
     }
 }

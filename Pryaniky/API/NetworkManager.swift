@@ -70,11 +70,16 @@ struct NetworkManager {
 
     func downloadJsonData(completionHandler: @escaping (Result<JsonData, NetworkError>) -> Void) {
 
-        performRequest(to: K.url) { result in
+        performRequest(to: K.urlMultiData) { result in
             switch result {
             case .success(let data):
                 do {
+
+                    // TODO: Use for test
+//                    print("DEBUG: Using fake json data")
+//                    let jsonData = try JsonData(from: K.jsonDataWithUnknownBlocks)
                     let jsonData = try JsonData(from: data)
+
                     completionHandler(.success(jsonData))
 
                 } catch {

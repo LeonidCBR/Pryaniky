@@ -28,6 +28,8 @@
 		D729988526981AC000500111 /* SelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D729988426981AC000500111 /* SelectorCell.swift */; };
 		D729988726981FCA00500111 /* JsonDataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D729988626981FCA00500111 /* JsonDataType.swift */; };
 		D729988926982F3C00500111 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D729988826982F3C00500111 /* Extensions.swift */; };
+		D72C96FF26A503B600287A25 /* UnknownBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72C96FE26A503B600287A25 /* UnknownBlock.swift */; };
+		D72C970126A50D0F00287A25 /* DummyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72C970026A50D0F00287A25 /* DummyCell.swift */; };
 		D7DFDC97269BF01D00CE7FA2 /* PresenterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DFDC96269BF01D00CE7FA2 /* PresenterManager.swift */; };
 		D7DFDC99269BF74700CE7FA2 /* Pryanik.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DFDC98269BF74700CE7FA2 /* Pryanik.swift */; };
 		D7DFDC9B269BFFC600CE7FA2 /* RuntimeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DFDC9A269BFFC600CE7FA2 /* RuntimeError.swift */; };
@@ -57,6 +59,8 @@
 		D729988426981AC000500111 /* SelectorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorCell.swift; sourceTree = "<group>"; };
 		D729988626981FCA00500111 /* JsonDataType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonDataType.swift; sourceTree = "<group>"; };
 		D729988826982F3C00500111 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		D72C96FE26A503B600287A25 /* UnknownBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnknownBlock.swift; sourceTree = "<group>"; };
+		D72C970026A50D0F00287A25 /* DummyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyCell.swift; sourceTree = "<group>"; };
 		D7DFDC96269BF01D00CE7FA2 /* PresenterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterManager.swift; sourceTree = "<group>"; };
 		D7DFDC98269BF74700CE7FA2 /* Pryanik.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pryanik.swift; sourceTree = "<group>"; };
 		D7DFDC9A269BFFC600CE7FA2 /* RuntimeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuntimeError.swift; sourceTree = "<group>"; };
@@ -128,6 +132,7 @@
 				D729988626981FCA00500111 /* JsonDataType.swift */,
 				D712FE2C269ABC1C004E9CE3 /* NetworkError.swift */,
 				D7DFDC9A269BFFC600CE7FA2 /* RuntimeError.swift */,
+				D72C96FE26A503B600287A25 /* UnknownBlock.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -139,6 +144,7 @@
 				D7299880269815CB00500111 /* TextCell.swift */,
 				D7299882269819CC00500111 /* PictureCell.swift */,
 				D729988426981AC000500111 /* SelectorCell.swift */,
+				D72C970026A50D0F00287A25 /* DummyCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -244,8 +250,10 @@
 				D729988526981AC000500111 /* SelectorCell.swift in Sources */,
 				D7299875269801C500500111 /* Picture.swift in Sources */,
 				D729988926982F3C00500111 /* Extensions.swift in Sources */,
+				D72C970126A50D0F00287A25 /* DummyCell.swift in Sources */,
 				D7299877269801D700500111 /* Variant.swift in Sources */,
 				D7DFDC9B269BFFC600CE7FA2 /* RuntimeError.swift in Sources */,
+				D72C96FF26A503B600287A25 /* UnknownBlock.swift in Sources */,
 				D7DFDC99269BF74700CE7FA2 /* Pryanik.swift in Sources */,
 				D7029C772696928400E73EFE /* SceneDelegate.swift in Sources */,
 				D7DFDC97269BF01D00CE7FA2 /* PresenterManager.swift in Sources */,
