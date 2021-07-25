@@ -11,21 +11,16 @@ struct K {
     static let url = URL(string: "https://pryaniky.com/static/json/sample.json")!
     static let urlMultiData = URL(string: "https://pryaniky.com/static/json/much-more-items-in-data.json")!
 
-    static let mainCellIdentifier = "mainCellIdentifier"
-    static let dummyCellIdentifier = "dummyCellIdentifier"
-
-    static let hz = "hz"
-    static let picture = "picture"
-    static let selector = "selector"
-
-    static let dictTypes = [hz: JsonDataType.text,
-                            picture: JsonDataType.picture,
-                            selector: JsonDataType.selector]
-
+    struct Identifier {
+        static let textCell = "TextCellIdentifier"
+        static let pictureCell = "PictureCellIdentifier"
+        static let selectorCell = "SelectorCellIdentifier"
+        static let dummyCell = "DummyCellIdentifier"
+    }
 
     // MARK: - Data for testing
 
-    static let simpleJsonData = """
+    static let simpleJsonData = Data("""
         {
             "data": [
                 {
@@ -60,10 +55,10 @@ struct K {
             ],
             "view": ["hz", "selector", "picture", "hz"]
         }
-    """.data(using: .utf8)!
+    """.utf8)
 
 
-    static let jsonDataWithUnknownBlocks = """
+    static let jsonDataWithUnknownBlocks = Data("""
         {
             "data": [
                 {
@@ -111,10 +106,10 @@ struct K {
             ],
             "view": ["hz", "audio", "other", "unknownKey", "selector", "picture", "hz"]
         }
-    """.data(using: .utf8)!
+    """.utf8)
 
 
-    static let multiJsonData = """
+    static let multiJsonData = Data("""
     {
         "data": [
             {
@@ -206,6 +201,6 @@ struct K {
         ],
         "view": ["hz", "selector", "picture", "hz", "picture", "selector"]
     }
-    """.data(using: .utf8)!
+    """.utf8)
 
 }

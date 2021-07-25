@@ -41,25 +41,19 @@ class SelectorCell: ParentCell {
     }
 
     func configureSelectorControl() {
-        guard let selector = pryanik as? Selector else {
-            print("ERROR: Failed to casting picture data!")
-            return
+        if case .selector(let selector) = pryanik {
+            pageControl.numberOfPages = selector.variantsCount
+            pageControl.currentPage = selector.selectedId - 1
         }
-
-        pageControl.numberOfPages = selector.variantsCount
-        pageControl.currentPage = selector.selectedId - 1
     }
 
 
     // MARK: - Selectors
 
     @objc func pageChanged() {
-        guard var selector = pryanik as? Selector else {
-            print("ERROR: Failed to casting selector data!")
-            return
+        if case .selector(var selector) = pryanik {
+            selector.selectedId = pageControl.currentPage + 1
+            pryanikText.text = selector.text
         }
-
-        selector.selectedId = pageControl.currentPage + 1
-        pryanikText.text = selector.text
     }
 }

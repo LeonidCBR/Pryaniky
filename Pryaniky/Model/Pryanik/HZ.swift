@@ -1,5 +1,5 @@
 //
-//  Variant.swift
+//  HZ.swift
 //  Pryaniky
 //
 //  Created by Яна Латышева on 09.07.2021.
@@ -7,7 +7,6 @@
 
 import Foundation
 
-struct Variant: Decodable {
-    let id: Int
+struct HZ: Codable {
     let text: String
 }

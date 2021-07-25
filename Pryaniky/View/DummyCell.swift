@@ -16,7 +16,7 @@ class DummyCell: ParentCell {
         txt.font = UIFont.boldSystemFont(ofSize: 10)
         txt.numberOfLines = 0
         txt.textAlignment = .center
-        txt.text = "input name"
+        txt.text = "Dummy name"
         return txt
     }()
 

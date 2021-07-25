@@ -68,19 +68,17 @@ struct NetworkManager {
     }
 
 
-    func downloadJsonData(completionHandler: @escaping (Result<JsonData, NetworkError>) -> Void) {
+    func downloadJsonData(completionHandler: @escaping (Result<Feed, NetworkError>) -> Void) {
 
         performRequest(to: K.urlMultiData) { result in
             switch result {
             case .success(let data):
                 do {
-
-                    // TODO: Use for test
+                    let feed = try JSONDecoder().decode(Feed.self, from: data)
+                    // For test
 //                    print("DEBUG: Using fake json data")
-//                    let jsonData = try JsonData(from: K.jsonDataWithUnknownBlocks)
-                    let jsonData = try JsonData(from: data)
-
-                    completionHandler(.success(jsonData))
+//                    let feed = try JSONDecoder().decode(Feed.self, from: K.jsonDataWithUnknownBlocks)
+                    completionHandler(.success(feed))
 
                 } catch {
                     completionHandler(.failure(.unexpectedJSON))
@@ -95,7 +93,6 @@ struct NetworkManager {
 
     
     func downloadImage(with path: String, completionHandler: @escaping (Result<Data, NetworkError>) -> Void ) {
-//        print("DEBUG: \(#function) Downloading image with url \(path)")
         guard let url = URL(string: path) else {
             print("DEBUG: Path of the image is invalid!")
             return

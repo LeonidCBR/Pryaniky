@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct UnknownBlock: Pryanik, Decodable {
+struct UnknownData: Codable {
     let text: String
 }

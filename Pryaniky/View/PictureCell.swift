@@ -21,13 +21,13 @@ class PictureCell: ParentCell {
     // MARK: - Methods
 
     override func configureUI() {
-        contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 160).isActive = true
+        //contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 160).isActive = true
 
         contentView.addSubview(pictureView)
         pictureView.anchor(top: contentView.topAnchor, paddingTop: 30.0,
                            bottom: contentView.bottomAnchor, paddingBottom: 30.0,
                            leading: contentView.leadingAnchor, paddingLeading: 20.0,
-                           width: 100.0)
+                           width: 100.0, height: 100.0)
 
         contentView.addSubview(pryanikText)
         pryanikText.anchor(leading: pictureView.trailingAnchor, paddingLeading: 10.0,
@@ -37,14 +37,9 @@ class PictureCell: ParentCell {
 
     override func updateUI() {
         super.updateUI()
-
-        guard let picture = pryanik as? Picture else {
-            print("ERROR: Failed to casting picture data!")
-            return
+        if case .picture(let picture) = pryanik {
+            downloadImage(with: picture.url)
         }
-
-        // TODO: - Download picture
-        downloadImage(with: picture.url)
     }
 
     func downloadImage(with path: String) {

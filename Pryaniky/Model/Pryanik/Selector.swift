@@ -7,22 +7,27 @@
 
 import Foundation
 
-struct Selector: Pryanik, Decodable {
+struct Selector: Codable {
 
-    // MARK: - Properties
-    
-    var text: String {
-        return variants.first() { $0.id == selectedId }?.text ?? "SelectedId is invalid!"
+    struct Variant: Codable {
+        let id: Int
+        let text: String
     }
+
+    private let variants: [Variant]
 
     var selectedId: Int {
         didSet {
             if (selectedId - 1 < variants.startIndex) || (selectedId - 1 > variants.endIndex) {
+                // if selectedId has invalid value set it to first position
                 return selectedId = variants.startIndex + 1
             }
         }
     }
-    private let variants: [Variant]
+
+    var text: String {
+        return variants.first() { $0.id == selectedId }?.text ?? "SelectedId is invalid!"
+    }
 
     var variantsCount: Int {
         return variants.count

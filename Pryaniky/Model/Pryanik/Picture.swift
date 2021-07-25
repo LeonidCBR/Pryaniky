@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Picture: Pryanik, Decodable {
+struct Picture: Codable {
     let text: String
     let url: String
 }

@@ -11,9 +11,7 @@ class MainTableViewController: UITableViewController {
 
     // MARK: - Properties
 
-    var viewItems: [String]?
-    var dataItems: [DataItem]?
-
+    let pryanikyViewModel = PryanikyViewModel()
 
     // MARK: - Lifecycle
 
@@ -23,32 +21,26 @@ class MainTableViewController: UITableViewController {
         fetchData()
     }
 
+
     // MARK: - Methods
 
     func configureUI() {
-        tableView.register(TextCell.self, forCellReuseIdentifier: JsonDataType.text.description)
-        tableView.register(PictureCell.self, forCellReuseIdentifier: JsonDataType.picture.description)
-        tableView.register(SelectorCell.self, forCellReuseIdentifier: JsonDataType.selector.description)
+        tableView.register(TextCell.self, forCellReuseIdentifier: K.Identifier.textCell)
+        tableView.register(PictureCell.self, forCellReuseIdentifier: K.Identifier.pictureCell)
+        tableView.register(SelectorCell.self, forCellReuseIdentifier: K.Identifier.selectorCell)
 
         // dummy cell
-//        tableView.register(UITableViewCell.self, forCellReuseIdentifier: K.mainCellIdentifier)
-        tableView.register(DummyCell.self, forCellReuseIdentifier: K.dummyCellIdentifier)
+        tableView.register(DummyCell.self, forCellReuseIdentifier: K.Identifier.dummyCell)
     }
 
     func fetchData() {
-        NetworkManager.shared.downloadJsonData() { [weak self] result in
-            guard let self = self else { return }
-
-            switch result {
-            case .success(let jsonData):
-                self.viewItems = jsonData.view
-                self.dataItems = jsonData.data
-                self.tableView.reloadData()
-
-            case .failure(let error):
-                print("DEBUG: Process an error \(error.localizedDescription)")
-                PresenterManager.shared.showMessage(withTitle: "Ошибка!", andMessage: error.localizedDescription, byViewController: self)
+        pryanikyViewModel.fetchItems { [weak self] error in
+            if let error = error {
+                // TODO: implement this section
+                print("DEBUG: Error while fetching data \(error)")
+                return
             }
+            self?.tableView.reloadData()
         }
     }
 
@@ -56,48 +48,40 @@ class MainTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return pryanikyViewModel.numberOfSections
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewItems?.count ?? 0
+        return pryanikyViewModel.rowsPerSection[section]
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell: ParentCell
 
-        guard let typeName = viewItems?[indexPath.row] else {
-            print("DEBUG: Return dummy cell with unknown block")
-            cell = tableView.dequeueReusableCell(withIdentifier: K.dummyCellIdentifier, for: indexPath) as! DummyCell
-            cell.pryanik = UnknownBlock(text: "Unknown block")
-            return cell
+        let pryanik = pryanikyViewModel.pryanik(inSection: indexPath.section, atRow: indexPath.row)
+        switch pryanik.unassociated {
+        case .hz:
+            cell = tableView.dequeueReusableCell(withIdentifier: K.Identifier.textCell, for: indexPath) as! ParentCell
+        case .picture:
+            cell = tableView.dequeueReusableCell(withIdentifier: K.Identifier.pictureCell, for: indexPath) as! ParentCell
+        case .selector:
+            cell = tableView.dequeueReusableCell(withIdentifier: K.Identifier.selectorCell, for: indexPath) as! ParentCell
+        case .unknown:
+            cell = tableView.dequeueReusableCell(withIdentifier: K.Identifier.dummyCell, for: indexPath) as! ParentCell
         }
 
-        if let jsonDataType = K.dictTypes[typeName] {
-            cell = tableView.dequeueReusableCell(withIdentifier: jsonDataType.description, for: indexPath) as! ParentCell
-
-        } else {
-            // return dummy cell
-            print("DEBUG: Return dummy cell")
-            cell = tableView.dequeueReusableCell(withIdentifier: K.dummyCellIdentifier, for: indexPath) as! DummyCell
-            (cell as! DummyCell).pryanikName.text = typeName
-        }
-
-        cell.pryanik = dataItems?.first() {$0.name == typeName}?.data
+        cell.pryanik = pryanik
         return cell
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
 
-        guard let viewItemName = viewItems?[indexPath.row] else {
-            return
-        }
-
+        let pryanik = pryanikyViewModel.pryanik(inSection: indexPath.section, atRow: indexPath.row)
         let id = indexPath.row
         let infoController = InfoViewController()
-        infoController.infoItem = (id, viewItemName)
+        infoController.infoItem = (id, pryanik.text)
         present(infoController, animated: true)
     }
 
