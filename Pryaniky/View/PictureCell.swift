@@ -37,7 +37,8 @@ class PictureCell: ParentCell {
 
     override func updateUI() {
         super.updateUI()
-        if case .picture(let picture) = pryanik {
+//        if case .picture(let picture) = pryanik {
+        if case .picture(let picture) = pryanikCellViewModel?.pryanik {
             downloadImage(with: picture.url)
         }
     }

@@ -12,25 +12,50 @@ typealias DataHandler = () -> Void
 
 final class PryanikyViewModel {
 
-    lazy var feed: Feed = Feed()
+    lazy private var feed: Feed = Feed()
+    var pryanikCellViewModels: [PryanikCellViewModel] = []
 
     var numberOfSections: Int = 0
     var rowsPerSection: [Int] = []
 
 //    var reloadHandler: DataHandler = { }
 
+    private func configure() {
+        pryanikCellViewModels = []
+        pryanikCellViewModels.reserveCapacity(feed.pryaniky.count)
+        for pryanik in feed.pryaniky {
+            let prynikCellViewModel = PryanikCellViewModel(from: pryanik)
+            pryanikCellViewModels.append(prynikCellViewModel)
+        }
+
+        numberOfSections = feed.viewItems.count
+        calculateRowsPerSection()
+
+    }
+
     private func calculateRowsPerSection() {
         rowsPerSection = []
+//        for item in feed.viewItems {
+//            let pryaniky = feed.pryaniky.filter { $0.unassociated.rawValue == item }
+//            let count = pryaniky.count
+//            rowsPerSection.append(count)
+//        }
         for item in feed.viewItems {
-            let pryaniky = feed.pryaniky.filter { $0.unassociated.rawValue == item }
+            let pryaniky = pryanikCellViewModels.filter { $0.pryanik.unassociated.rawValue == item }
             let count = pryaniky.count
             rowsPerSection.append(count)
         }
     }
 
-    func pryanik(inSection section: Int, atRow row: Int) -> Pryanik {
+//    func pryanik(inSection section: Int, atRow row: Int) -> Pryanik {
+//        let item = feed.viewItems[section]
+//        let pryaniky = feed.pryaniky.filter { $0.unassociated.rawValue == item }
+//        return pryaniky[row]
+//    }
+
+    func pryanikCellViewModel(inSection section: Int, atRow row: Int) -> PryanikCellViewModel {
         let item = feed.viewItems[section]
-        let pryaniky = feed.pryaniky.filter { $0.unassociated.rawValue == item }
+        let pryaniky = pryanikCellViewModels.filter { $0.pryanik.unassociated.rawValue == item }
         return pryaniky[row]
     }
 
@@ -39,8 +64,13 @@ final class PryanikyViewModel {
             switch result {
             case .success(let feed):
                 self?.feed = feed
-                self?.numberOfSections = feed.viewItems.count
-                self?.calculateRowsPerSection()
+
+                self?.configure()
+//                self?.numberOfSections = feed.viewItems.count
+//                self?.calculateRowsPerSection()
+
+
+
 //                self?.reloadHandler()
                 completion(nil)
 

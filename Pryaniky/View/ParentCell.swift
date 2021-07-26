@@ -19,7 +19,12 @@ class ParentCell: UITableViewCell {
         return txt
     }()
     
-    var pryanik: Pryanik? {
+//    var pryanik: Pryanik? {
+//        didSet {
+//            updateUI()
+//        }
+//    }
+    var pryanikCellViewModel: PryanikCellViewModel? {
         didSet {
             updateUI()
         }
@@ -44,6 +49,7 @@ class ParentCell: UITableViewCell {
     }
 
     func updateUI() {
-        pryanikText.text = pryanik?.text
+        //pryanikText.text = pryanik?.text
+        pryanikText.text = pryanikCellViewModel?.pryanik.text
     }
 }

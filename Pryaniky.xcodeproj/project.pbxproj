@@ -31,6 +31,7 @@
 		D7DFDC97269BF01D00CE7FA2 /* PresenterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DFDC96269BF01D00CE7FA2 /* PresenterManager.swift */; };
 		D7DFDC99269BF74700CE7FA2 /* Pryanik.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DFDC98269BF74700CE7FA2 /* Pryanik.swift */; };
 		D7DFDC9B269BFFC600CE7FA2 /* RuntimeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DFDC9A269BFFC600CE7FA2 /* RuntimeError.swift */; };
+		D7E7912A26AE376100DA31A3 /* PryanikCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E7912926AE376100DA31A3 /* PryanikCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		D7DFDC96269BF01D00CE7FA2 /* PresenterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterManager.swift; sourceTree = "<group>"; };
 		D7DFDC98269BF74700CE7FA2 /* Pryanik.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pryanik.swift; sourceTree = "<group>"; };
 		D7DFDC9A269BFFC600CE7FA2 /* RuntimeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuntimeError.swift; sourceTree = "<group>"; };
+		D7E7912926AE376100DA31A3 /* PryanikCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PryanikCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				D7B480C226A92E7A005E6B8C /* PryanikyViewModel.swift */,
+				D7E7912926AE376100DA31A3 /* PryanikCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 			files = (
 				D712FE2B269AB45F004E9CE3 /* NetworkManager.swift in Sources */,
 				D7299883269819CC00500111 /* PictureCell.swift in Sources */,
+				D7E7912A26AE376100DA31A3 /* PryanikCellViewModel.swift in Sources */,
 				D7B480C326A92E7A005E6B8C /* PryanikyViewModel.swift in Sources */,
 				D72998712698013400500111 /* Constants.swift in Sources */,
 				D729986E2698006B00500111 /* MainTableViewController.swift in Sources */,

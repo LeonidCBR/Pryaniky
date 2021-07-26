@@ -59,8 +59,9 @@ class MainTableViewController: UITableViewController {
 
         let cell: ParentCell
 
-        let pryanik = pryanikyViewModel.pryanik(inSection: indexPath.section, atRow: indexPath.row)
-        switch pryanik.unassociated {
+        let pryanikCellViewModel = pryanikyViewModel.pryanikCellViewModel(inSection: indexPath.section, atRow: indexPath.row)
+        
+        switch pryanikCellViewModel.pryanik.unassociated {
         case .hz:
             cell = tableView.dequeueReusableCell(withIdentifier: K.Identifier.textCell, for: indexPath) as! ParentCell
         case .picture:
@@ -71,17 +72,17 @@ class MainTableViewController: UITableViewController {
             cell = tableView.dequeueReusableCell(withIdentifier: K.Identifier.dummyCell, for: indexPath) as! ParentCell
         }
 
-        cell.pryanik = pryanik
+        cell.pryanikCellViewModel = pryanikCellViewModel
         return cell
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
 
-        let pryanik = pryanikyViewModel.pryanik(inSection: indexPath.section, atRow: indexPath.row)
         let id = indexPath.row
         let infoController = InfoViewController()
-        infoController.infoItem = (id, pryanik.text)
+        let pryanikCellViewModel = pryanikyViewModel.pryanikCellViewModel(inSection: indexPath.section, atRow: indexPath.row)
+        infoController.infoItem = (id, pryanikCellViewModel.pryanik.text)
         present(infoController, animated: true)
     }
 
