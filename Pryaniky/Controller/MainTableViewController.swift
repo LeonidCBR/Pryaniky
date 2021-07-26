@@ -36,8 +36,10 @@ class MainTableViewController: UITableViewController {
     func fetchData() {
         pryanikyViewModel.fetchItems { [weak self] error in
             if let error = error {
-                // TODO: implement this section
                 print("DEBUG: Error while fetching data \(error)")
+                if let self = self {
+                    PresenterManager.shared.showMessage(withTitle: "Ошибка!", andMessage: error.localizedDescription, byViewController: self)
+                }
                 return
             }
             self?.tableView.reloadData()
