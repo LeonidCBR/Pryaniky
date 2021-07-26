@@ -21,18 +21,18 @@ class PictureCell: ParentCell {
     // MARK: - Methods
 
     override func configureUI() {
-        //contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 160).isActive = true
-
         contentView.addSubview(pictureView)
+        let side = frame.width - 100.0
         pictureView.anchor(top: contentView.topAnchor, paddingTop: 30.0,
-                           bottom: contentView.bottomAnchor, paddingBottom: 30.0,
-                           leading: contentView.leadingAnchor, paddingLeading: 20.0,
-                           width: 100.0, height: 100.0)
+                           width: side,
+                           height: side,
+                           centerX: contentView.centerXAnchor)
 
         contentView.addSubview(pryanikText)
-        pryanikText.anchor(leading: pictureView.trailingAnchor, paddingLeading: 10.0,
-                           trailing: contentView.trailingAnchor, paddingTrailing: 10.0,
-                           centerY: contentView.centerYAnchor)
+        pryanikText.anchor(top: pictureView.bottomAnchor, paddingTop: 20.0,
+                           bottom: contentView.bottomAnchor, paddingBottom: 30.0,
+                           leading: pictureView.leadingAnchor,
+                           trailing: pictureView.trailingAnchor)
     }
 
     override func updateUI() {
