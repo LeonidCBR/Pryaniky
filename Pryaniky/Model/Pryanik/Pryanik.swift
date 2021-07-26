@@ -57,34 +57,28 @@ enum Pryanik: Codable {
         let name = try container.decode(String.self, forKey: .name)
         switch name {
         case Unassociated.hz.rawValue:
-//            self = .hz(try container.decode(HZ.self, forKey: .data))
             let hzData = try container.decode(HzData.self, forKey: .data)
             let hz = HZ(name: name, data: hzData)
             self = .hz(hz)
 
         case Unassociated.picture.rawValue:
-//            self = .picture(try container.decode(Picture.self, forKey: .data))
             let pictureData = try container.decode(PictureData.self, forKey: .data)
             let picture = Picture(name: name, data: pictureData)
             self = .picture(picture)
 
         case Unassociated.selector.rawValue:
-//            self = .selector(try container.decode(Selector.self, forKey: .data))
             let selectorData = try container.decode(SelectorData.self, forKey: .data)
             let selector = Selector(name: name, data: selectorData)
             self = .selector(selector)
 
         default:
-            // trying to decode as dummy data
-            print("DEBUG: Trying to decode unknown item (\(name)) as dummy data...")
+            // trying to decode as unknown data
+
             if let unknownData = try? container.decode(UnknownData.self, forKey: .data) {
-//                print("DEBUG: unknown data \(unknownData.name) - \(unknownData.text)")
-                print("DEBUG: unknown data \(unknownData.text)")
                 let unknown = Unknown(name: name, data: unknownData)
                 self = .unknown(unknown)
+                
             } else {
-                print("DEBUG: We've got unknown data without text block!")
-//                self = .unknown(UnknownData(name: name, text: "Unknown block of data"))
                 let unknown = Unknown(name: name, data: UnknownData(text: "NO TEXT"))
                 self = .unknown(unknown)
             }

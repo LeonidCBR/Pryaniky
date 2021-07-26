@@ -22,7 +22,6 @@ struct NetworkManager {
         let task = URLSession.shared.dataTask(with: apiUrl) { data, response, error in
 
             if let error = error {
-                print("DEBUG: \(#function) urlSession error \(error)")
                 DispatchQueue.main.async {
                     completionHandler(.failure(.urlSessionError(error)))
                 }
@@ -30,7 +29,6 @@ struct NetworkManager {
             }
 
             guard let httpResponse = response as? HTTPURLResponse else {
-                print("DEBUG: \(#function) Response is nil")
                 DispatchQueue.main.async {
                     completionHandler(.failure(.noResponse))
                 }
@@ -39,7 +37,6 @@ struct NetworkManager {
 
             if !(200...299).contains(httpResponse.statusCode) {
                 let code = httpResponse.statusCode
-                print("DEBUG: - Bad status code: \(code)")
                 DispatchQueue.main.async {
                     if code == 401 {
                         completionHandler(.failure(.unauthorized))
@@ -74,14 +71,7 @@ struct NetworkManager {
             switch result {
             case .success(let data):
                 do {
-
-
-//                    let feed = try JSONDecoder().decode(Feed.self, from: data)
-                    // For test
-                    print("DEBUG: Using fake json data")
-                    let feed = try JSONDecoder().decode(Feed.self, from: K.jsonDataWithUnknownBlocks)
-
-                    
+                    let feed = try JSONDecoder().decode(Feed.self, from: data)
                     completionHandler(.success(feed))
 
                 } catch {

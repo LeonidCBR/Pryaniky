@@ -18,12 +18,7 @@ class ParentCell: UITableViewCell {
         txt.textAlignment = .center
         return txt
     }()
-    
-//    var pryanik: Pryanik? {
-//        didSet {
-//            updateUI()
-//        }
-//    }
+
     var pryanikCellViewModel: PryanikCellViewModel? {
         didSet {
             updateUI()
@@ -49,7 +44,6 @@ class ParentCell: UITableViewCell {
     }
 
     func updateUI() {
-        //pryanikText.text = pryanik?.text
         pryanikText.text = pryanikCellViewModel?.pryanik.text
     }
 }

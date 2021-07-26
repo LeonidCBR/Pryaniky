@@ -30,7 +30,6 @@
 		D7B480C326A92E7A005E6B8C /* PryanikyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B480C226A92E7A005E6B8C /* PryanikyViewModel.swift */; };
 		D7DFDC97269BF01D00CE7FA2 /* PresenterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DFDC96269BF01D00CE7FA2 /* PresenterManager.swift */; };
 		D7DFDC99269BF74700CE7FA2 /* Pryanik.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DFDC98269BF74700CE7FA2 /* Pryanik.swift */; };
-		D7DFDC9B269BFFC600CE7FA2 /* RuntimeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DFDC9A269BFFC600CE7FA2 /* RuntimeError.swift */; };
 		D7E7912A26AE376100DA31A3 /* PryanikCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E7912926AE376100DA31A3 /* PryanikCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -60,7 +59,6 @@
 		D7B480C226A92E7A005E6B8C /* PryanikyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PryanikyViewModel.swift; sourceTree = "<group>"; };
 		D7DFDC96269BF01D00CE7FA2 /* PresenterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterManager.swift; sourceTree = "<group>"; };
 		D7DFDC98269BF74700CE7FA2 /* Pryanik.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pryanik.swift; sourceTree = "<group>"; };
-		D7DFDC9A269BFFC600CE7FA2 /* RuntimeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuntimeError.swift; sourceTree = "<group>"; };
 		D7E7912926AE376100DA31A3 /* PryanikCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PryanikCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -124,7 +122,6 @@
 				D7A4019A26AD6C2D00D565C7 /* Feed.swift */,
 				D7AB5EE426AD7BE300F278DF /* Pryanik */,
 				D712FE2C269ABC1C004E9CE3 /* NetworkError.swift */,
-				D7DFDC9A269BFFC600CE7FA2 /* RuntimeError.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -263,7 +260,6 @@
 				D7299875269801C500500111 /* Picture.swift in Sources */,
 				D729988926982F3C00500111 /* Extensions.swift in Sources */,
 				D72C970126A50D0F00287A25 /* DummyCell.swift in Sources */,
-				D7DFDC9B269BFFC600CE7FA2 /* RuntimeError.swift in Sources */,
 				D7A4019B26AD6C2D00D565C7 /* Feed.swift in Sources */,
 				D72C96FF26A503B600287A25 /* Unknown.swift in Sources */,
 				D7DFDC99269BF74700CE7FA2 /* Pryanik.swift in Sources */,

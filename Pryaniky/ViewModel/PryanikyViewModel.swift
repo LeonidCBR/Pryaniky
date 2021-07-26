@@ -18,8 +18,6 @@ final class PryanikyViewModel {
     var numberOfSections: Int = 0
     var rowsPerSection: [Int] = []
 
-//    var reloadHandler: DataHandler = { }
-
     private func configure() {
         pryanikCellViewModels = []
         pryanikCellViewModels.reserveCapacity(feed.pryaniky.count)
@@ -36,7 +34,6 @@ final class PryanikyViewModel {
     private func calculateRowsPerSection() {
         rowsPerSection = []
         for itemName in feed.viewItems {
-//            let pryaniky = pryanikCellViewModels.filter { $0.pryanik.unassociated.rawValue == item }
             let pryaniky = pryanikCellViewModels.filter { $0.pryanik.name == itemName }
             if pryaniky.isEmpty {
                 print("DEBUG: There is no data in pryaniks with name \(itemName)")
@@ -53,7 +50,6 @@ final class PryanikyViewModel {
 
     func pryanikCellViewModel(inSection section: Int, atRow row: Int) -> PryanikCellViewModel {
         let itemName = feed.viewItems[section]
-//        let pryaniky = pryanikCellViewModels.filter { $0.pryanik.unassociated.rawValue == item }
         let pryaniky = pryanikCellViewModels.filter { $0.pryanik.name == itemName }
         return pryaniky[row]
     }
@@ -64,7 +60,6 @@ final class PryanikyViewModel {
             case .success(let feed):
                 self?.feed = feed
                 self?.configure()
-//                self?.reloadHandler()
                 completion(nil)
 
             case .failure(let error):
