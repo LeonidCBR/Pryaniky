@@ -104,7 +104,7 @@ struct K {
                     }
                 }
             ],
-            "view": ["hz", "audio", "other", "unknownKey", "selector", "picture", "hz"]
+            "view": ["hz", "audio", "picture", "unknownKey", "selector", "picture", "other", "hz"]
         }
     """.utf8)
 

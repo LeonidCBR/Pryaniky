@@ -31,7 +31,9 @@ class InfoViewController: UIViewController {
     }
 
     required init?(coder: NSCoder) {
-        self.pryanikCellViewModel = PryanikCellViewModel(from: .unknown(UnknownData(text: "Dummy")))
+//        self.pryanikCellViewModel = PryanikCellViewModel(from: .unknown(UnknownData(name: "Dummy", text: "Dummy")))
+        let unknown = Unknown(name: "Dummy", data: UnknownData.init(text: "Dummy text"))
+        self.pryanikCellViewModel = PryanikCellViewModel(from: .unknown(unknown))
         super.init(coder: coder)
     }
 

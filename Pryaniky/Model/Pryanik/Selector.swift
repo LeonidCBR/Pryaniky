@@ -8,6 +8,28 @@
 import Foundation
 
 struct Selector: Codable {
+    let name: String
+    var data: SelectorData
+
+    var text: String {
+        return data.text
+    }
+
+    var variantsCount: Int {
+        return data.variantsCount
+    }
+
+    var selectedId: Int {
+        get {
+            return data.selectedId
+        }
+        set {
+            data.selectedId = newValue
+        }
+    }
+}
+
+struct SelectorData: Codable {
 
     struct Variant: Codable {
         let id: Int

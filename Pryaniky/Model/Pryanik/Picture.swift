@@ -8,6 +8,20 @@
 import Foundation
 
 struct Picture: Codable {
+    let name: String
+    let data: PictureData
+
+    var text: String {
+        return data.text
+    }
+
+    var url: String {
+        return data.url
+    }
+}
+
+struct PictureData: Codable {
     let text: String
     let url: String
+    
 }

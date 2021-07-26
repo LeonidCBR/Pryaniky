@@ -35,16 +35,26 @@ final class PryanikyViewModel {
 
     private func calculateRowsPerSection() {
         rowsPerSection = []
-        for item in feed.viewItems {
-            let pryaniky = pryanikCellViewModels.filter { $0.pryanik.unassociated.rawValue == item }
-            let count = pryaniky.count
-            rowsPerSection.append(count)
+        for itemName in feed.viewItems {
+//            let pryaniky = pryanikCellViewModels.filter { $0.pryanik.unassociated.rawValue == item }
+            let pryaniky = pryanikCellViewModels.filter { $0.pryanik.name == itemName }
+            if pryaniky.isEmpty {
+                print("DEBUG: There is no data in pryaniks with name \(itemName)")
+                let unknown = Unknown(name: itemName, data: UnknownData(text: "NO DATA"))
+                let dummyCellViewModel = PryanikCellViewModel(from: .unknown(unknown))
+                pryanikCellViewModels.append(dummyCellViewModel)
+                rowsPerSection.append(1)
+            } else {
+                let count = pryaniky.count
+                rowsPerSection.append(count)
+            }
         }
     }
 
     func pryanikCellViewModel(inSection section: Int, atRow row: Int) -> PryanikCellViewModel {
-        let item = feed.viewItems[section]
-        let pryaniky = pryanikCellViewModels.filter { $0.pryanik.unassociated.rawValue == item }
+        let itemName = feed.viewItems[section]
+//        let pryaniky = pryanikCellViewModels.filter { $0.pryanik.unassociated.rawValue == item }
+        let pryaniky = pryanikCellViewModels.filter { $0.pryanik.name == itemName }
         return pryaniky[row]
     }
 

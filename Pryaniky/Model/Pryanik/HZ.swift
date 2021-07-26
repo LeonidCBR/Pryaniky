@@ -8,5 +8,14 @@
 import Foundation
 
 struct HZ: Codable {
+    let name: String
+    let data: HzData
+
+    var text: String {
+        return data.text
+    }
+}
+
+struct HzData: Codable {
     let text: String
 }

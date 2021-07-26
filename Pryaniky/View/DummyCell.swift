@@ -38,4 +38,9 @@ class DummyCell: ParentCell {
                             trailing: contentView.trailingAnchor, paddingTrailing: 10.0)
     }
 
+    override func updateUI() {
+        pryanikName.text = pryanikCellViewModel?.pryanik.name
+        pryanikText.text = pryanikCellViewModel?.pryanik.text
+    }
+
 }
