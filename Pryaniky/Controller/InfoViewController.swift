@@ -16,17 +16,24 @@ class InfoViewController: UIViewController {
         txt.font = UIFont.boldSystemFont(ofSize: 20)
         txt.textColor = .white
         txt.textAlignment = .center
+        txt.numberOfLines = 0
         return txt
     }()
 
-    var infoItem: (Int, String)? {
-        didSet {
-            configInfoItem()
-        }
-    }
+    let pryanikCellViewModel: PryanikCellViewModel
 
 
     // MARK: - Lifecycle
+
+    init(with pryanikCellViewModel: PryanikCellViewModel) {
+        self.pryanikCellViewModel = pryanikCellViewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        self.pryanikCellViewModel = PryanikCellViewModel(from: .unknown(UnknownData(text: "Dummy")))
+        super.init(coder: coder)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,14 +47,16 @@ class InfoViewController: UIViewController {
         view.backgroundColor = .systemTeal
 
         view.addSubview(infoLabel)
-        infoLabel.anchor(centerX: view.centerXAnchor,
-                         centerY: view.centerYAnchor)
+        infoLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 100.0,
+                         bottom: view.safeAreaLayoutGuide.bottomAnchor, paddingBottom: 100.0,
+                         leading: view.safeAreaLayoutGuide.leadingAnchor, paddingLeading: 100.0,
+                         trailing: view.safeAreaLayoutGuide.trailingAnchor, paddingTrailing: 100.0)
+        configurePryanik()
     }
 
-    func configInfoItem() {
-        guard let infoItem = infoItem else { return }
-
-        infoLabel.text = "Object: [\(infoItem.0)] \(infoItem.1)"
+    func configurePryanik() {
+        let pryanik = pryanikCellViewModel.pryanik
+        infoLabel.text = "Object: [\(pryanik.unassociated.rawValue)]\n\(pryanik.text)"
     }
 
 }

@@ -79,10 +79,8 @@ class MainTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
 
-        let id = indexPath.row
-        let infoController = InfoViewController()
         let pryanikCellViewModel = pryanikyViewModel.pryanikCellViewModel(inSection: indexPath.section, atRow: indexPath.row)
-        infoController.infoItem = (id, pryanikCellViewModel.pryanik.text)
+        let infoController = InfoViewController(with: pryanikCellViewModel)
         present(infoController, animated: true)
     }
 
