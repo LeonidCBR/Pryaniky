@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+/*
 struct RuntimeError: Error {
     let message: String
 
@@ -18,3 +18,4 @@ struct RuntimeError: Error {
         return message
     }
 }
+*/

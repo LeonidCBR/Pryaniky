@@ -76,10 +76,10 @@ struct NetworkManager {
                 do {
 
 
-                    let feed = try JSONDecoder().decode(Feed.self, from: data)
+//                    let feed = try JSONDecoder().decode(Feed.self, from: data)
                     // For test
-//                    print("DEBUG: Using fake json data")
-//                    let feed = try JSONDecoder().decode(Feed.self, from: K.jsonDataWithUnknownBlocks)
+                    print("DEBUG: Using fake json data")
+                    let feed = try JSONDecoder().decode(Feed.self, from: K.jsonDataWithUnknownBlocks)
 
                     
                     completionHandler(.success(feed))
