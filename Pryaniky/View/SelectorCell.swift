@@ -43,7 +43,9 @@ class SelectorCell: ParentCell {
     func configureSelectorControl() {
         if case .selector(let selector) = pryanikCellViewModel?.pryanik {
             pageControl.numberOfPages = selector.variantsCount
-            pageControl.currentPage = selector.selectedId - 1
+//            pageControl.currentPage = selector.selectedId - 1
+            pageControl.currentPage = selector.id
+            //pageControl.currentPage = selector.id
         }
     }
 
@@ -52,7 +54,9 @@ class SelectorCell: ParentCell {
 
     @objc func pageChanged() {
         if case .selector(var selector) = pryanikCellViewModel?.pryanik {
-            selector.selectedId = pageControl.currentPage + 1
+            //!!!selector.selectedId = pageControl.currentPage + 1
+            selector.id = pageControl.currentPage
+            //selector.id = pageControl.currentPage + 1
             pryanikText.text = selector.text
             pryanikCellViewModel?.pryanik = .selector(selector)
         }

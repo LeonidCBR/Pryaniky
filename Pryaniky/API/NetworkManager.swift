@@ -67,7 +67,7 @@ struct NetworkManager {
 
     func downloadJsonData(completionHandler: @escaping (Result<Feed, NetworkError>) -> Void) {
 
-        performRequest(to: K.urlMultiData) { result in
+        performRequest(to: K.urlNew) { result in
             switch result {
             case .success(let data):
                 do {

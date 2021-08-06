@@ -10,6 +10,7 @@ import Foundation
 struct K {
     static let url = URL(string: "https://pryaniky.com/static/json/sample.json")!
     static let urlMultiData = URL(string: "https://pryaniky.com/static/json/much-more-items-in-data.json")!
+    static let urlNew = URL(string: "https://chat.pryaniky.com/json/data-custom-selected-id.json")!
 
     struct Identifier {
         static let textCell = "TextCellIdentifier"
